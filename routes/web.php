@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Crm\Homes\HomeController;
+use App\Http\Controllers\Crm\References\BrandController;
+use App\Http\Controllers\Crm\References\GenderController;
+use App\Http\Controllers\Crm\References\SeasonController;
+use App\Http\Controllers\Crm\References\SizeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +19,17 @@ use App\Http\Controllers\Crm\Homes\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('site.layouts.base');
+Route::get('/catalog', function () {
+    return view('site.catalogs.index');
 });
 
 Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('/brands', BrandController::class);
+    Route::resource('/genders', GenderController::class);
+    Route::resource('/sizes', SizeController::class);
+    Route::resource('/seasons', SeasonController::class);
+    
 });

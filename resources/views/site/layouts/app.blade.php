@@ -48,7 +48,7 @@
 
     <!-- ::::::  Start  Main Container Section  ::::::  -->
     <main id="main-container" class="main-container">
-        @section('main')
+        @yield('main')
     </main>
     <!-- ::::::  End  Main Container Section  ::::::  -->
 
